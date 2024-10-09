@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function NavBar() {
   return (
@@ -12,7 +13,7 @@ function NavBar() {
     <div className='container-fluid bg-body-secondary'>
     <Navbar expand="md" className="">
       <Container fluid>
-        <Navbar.Brand href="#">EduMaster</Navbar.Brand>
+        <Navbar.Brand href="/">EduMaster</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -33,7 +34,21 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex align-items-center">
+          <Dropdown  width="20" height="20">
+              <Dropdown.Toggle variant="outline-info" id="dropdown-basic" className='m-2'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+                
+              </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="/studentPortal">Student Portal</Dropdown.Item>
+              <Dropdown.Item href="/teacherPortal">Teacher Portal</Dropdown.Item>
+              <Dropdown.Item href="/adminPanel">Admin Panel</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
             <Form.Control
               type="search"
               placeholder="Search"
