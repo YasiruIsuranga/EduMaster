@@ -1,0 +1,90 @@
+.subscription {
+    background-image: url("https://img.freepik.com/free-photo/education-day-arrangement-table-with-copy-space_23-2148721266.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+}
+
+.subscription::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
+    z-index: 0;
+}
+
+.subscription .row {
+    position: relative;
+    z-index: 1;
+}
+
+.subscription-title {
+    font-size: 2rem;
+    color: #f8f9fa; /* Light gray for better readability */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.input {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0px 4px 16px rgba(244, 45, 0, 0.5); /* Focus effect */
+}
+
+.btnssubscribe {
+    background-color: #007bff !important; /* Updated to a green color */
+    color: white;
+    border: 2px solid #0056b3 !important;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    padding: 10px 30px;
+}
+
+.btnssubscribe:hover {
+    background-color: #0025f4 !important; /* Hover turns into the primary red color */
+    color: white;
+    border-color :#0025f4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .subscription-title {
+        font-size: 1.6rem;
+    }
+    .form-control {
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .subscription-title {
+        font-size: 1.4rem;
+    }
+    .form-control {
+        max-width: 160px;
+    }
+    .btnssubscribe {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+}

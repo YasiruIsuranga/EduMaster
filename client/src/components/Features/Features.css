@@ -1,0 +1,66 @@
+/* General icon styling */
+.feature-icon {
+    border: 2px solid #007bff; /* Bootstrap primary color */
+    padding: 10px;
+    border-radius: 50%;
+    color: #007bff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Bootstrap primary color */
+}
+
+/* General background styling */
+.feature-background {
+    background-color: #f8f9fa; /* Light grey background for better readability */
+    padding: 60px 20px;
+    border-radius: 10px;
+}
+
+.feature-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1188e3; /* Dark grey text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feature-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark mode styling */
+body.dark-mode .feature-background {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+body.dark-mode .feature-icon {
+    border-color: #28a745; /* Bootstrap success color */
+    color: #28a745;
+}
+
+body.dark-mode .feature-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); /* Success color */
+}
+
+body.dark-mode .feature-title {
+    color: #28a745; /* Success color for dark mode */
+}
+
+body.dark-mode p {
+    color: #d1d1d1;
+}
