@@ -1,11 +1,12 @@
 import React from 'react';
-import CourseSection from '../../components/CourseSection/CourseSection';
-import './Courses.css';
+import './StudentDashboard.css';
 import Footer from '../../components/Footer/footer';
 import StudentNavBar from '../../components/StudentNavBar/StudentNavBar';
+import SuserProfile from '../../components/SuserProfile/SuserProfile';
+import CourseSection from '../../components/CourseSection/CourseSection';
 import NavBar from '../../components/navBar/Nav';
 
-function Courses() {
+const StudentDashboard = () => {
   return (
     <>
       <NavBar />
@@ -16,10 +17,7 @@ function Courses() {
 
           {/* Right Content: Student Info and Courses */}
           <div className="col-lg-9 col-md-8 col-sm-12 right-content">
-            <div className="course-header text-center mb-4">
-              <h2 className="course-title">Your Courses</h2>
-              <p className="course-subtitle">Track your progress and manage your enrolled courses</p>
-            </div>
+            <SuserProfile />
             <CourseSection />
           </div>
         </div>
@@ -27,6 +25,6 @@ function Courses() {
       <Footer />
     </>
   );
-}
+};
 
-export default Courses;
+export default StudentDashboard;
