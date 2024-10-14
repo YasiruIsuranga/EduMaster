@@ -6,14 +6,15 @@ import StudentNavBar from '../../components/StudentNavBar/StudentNavBar';
 
 import SuserProfile from '../../components/SuserProfile/SuserProfile';
 import NavBar from '../../components/navBar/Nav';
+import LogedNavBar from '../../components/LogedNavBar/LogedNavBar';
 
 
 const StudentUserProfile = () => {
 
   return (
     <>
-      <NavBar/>
-      <div className="dashboard-container container-fluid ">
+      <LogedNavBar/>
+      <div className=" container-fluid ">
         <div className="row">
           {/* Left Sidebar: Navigation Menu */}
           <StudentNavBar/>

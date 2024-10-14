@@ -26,16 +26,8 @@ function NavBar() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
-            <NavDropdown title="Courses" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/courses">Course 1</NavDropdown.Item>
-              <NavDropdown.Item href="/courses">
-                Course 2
-              </NavDropdown.Item>
-              {/* <NavDropdown.Divider /> */}
-              <NavDropdown.Item href="/courses">
-                Course 3
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/programs">programs</Nav.Link>
+            
           </Nav>
           <Form className="d-flex align-items-center">
           <Dropdown  width="20" height="20">

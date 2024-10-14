@@ -5,14 +5,15 @@ import Footer from '../../components/Footer/footer';
 import TuserProfile from '../../components/TuserProfile/TuserProfile';
 import TeacherNavBar from '../../components/TeacherNavBar/TeacherNavBar';
 import NavBar from '../../components/navBar/Nav';
+import LogedNavBar from '../../components/LogedNavBar/LogedNavBar';
 
 
 const TeacherDashboard = () => {
 
   return (
     <>
-      <NavBar/>
-      <div className="dashboard-container container-fluid ">
+      <LogedNavBar/>
+      <div className=" container-fluid ">
         <div className="row">
           {/* Left Sidebar: Navigation Menu */}
           <TeacherNavBar/>

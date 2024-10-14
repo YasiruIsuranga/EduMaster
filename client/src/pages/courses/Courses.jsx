@@ -9,7 +9,7 @@ function Courses() {
   return (
     <>
       <NavBar />
-      <div className="dashboard-container container-fluid">
+      <div className=" container-fluid">
         <div className="row">
           {/* Left Sidebar: Navigation Menu */}
           <StudentNavBar />

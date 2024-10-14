@@ -4,13 +4,13 @@ import Footer from '../../components/Footer/footer';
 import StudentNavBar from '../../components/StudentNavBar/StudentNavBar';
 import SuserProfile from '../../components/SuserProfile/SuserProfile';
 import CourseSection from '../../components/CourseSection/CourseSection';
-import NavBar from '../../components/navBar/Nav';
+import LogedNavBar from '../../components/LogedNavBar/LogedNavBar';
 
 const StudentDashboard = () => {
   return (
     <>
-      <NavBar />
-      <div className="dashboard-container container-fluid">
+      <LogedNavBar />
+      <div className="container-fluid main-container">
         <div className="row">
           {/* Left Sidebar: Navigation Menu */}
           <StudentNavBar />
