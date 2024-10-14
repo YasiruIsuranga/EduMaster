@@ -7,6 +7,7 @@ import StudentDashboard from './pages/StudentDashboard/StudentDashboard.jsx';
 import StudentUserProfile from './pages/StudentUserProfile/StudentUserProfile.jsx';
 import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard.jsx';
 import TeacherUserProfile from './pages/TeacherUserProfile/TeacherUserprofile.jsx';
+import OpenCourse from './pages/OpenCourse/OpenCourse.jsx';
 
 export const router = createBrowserRouter([
     {path:"/", element:<Home /> },
@@ -17,4 +18,5 @@ export const router = createBrowserRouter([
     {path:"/studentuserprofile", element:<StudentUserProfile />},
     {path:"/teacherdashboard", element:<TeacherDashboard />},
     {path:"/teacheruserprofile", element:<TeacherUserProfile />},
+    {path:"/opencourse", element:<OpenCourse />},
   ]);
