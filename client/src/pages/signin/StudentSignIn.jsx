@@ -8,8 +8,13 @@ import { AuthContext } from '@/contexts/auth-context';
 
 function Signin() { 
 const [activeTab,setActiveTab] = useState('signin');
-const {signInFormData,setSignInFormData,
-  signUpFormData,setSignUpFormData} = useContext(AuthContext);
+const {
+  signInFormData,
+  setSignInFormData,
+  signUpFormData,
+  setSignUpFormData,
+  handleRegisterUser
+} = useContext(AuthContext);
 
 function handleTabChange(value){
   setActiveTab(value)
@@ -76,6 +81,7 @@ console.log(signInFormData)
                       formData={signUpFormData}
                       setFormData={setSignUpFormData}
                       isButtonDisabled ={!checkSignUpIsValid()}
+                      handleSubmit={handleRegisterUser}
                       />
                   </CardContent>
                 </Card>
