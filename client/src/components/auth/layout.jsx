@@ -10,7 +10,7 @@ function AuthLayout(){
                     <h1>Welacome to Student Portal</h1>
                 </div>
             </div>
-            <div className="d-flex flex-grow-1 align-items-center justify-content-center bg-light px-3 py-5 px-sm-4 px-lg-5">
+            <div className="d-flex flex-grow-1 align-items-center justify-content-center bg-light">
                 <h1>Login</h1>
             </div>
         </div>

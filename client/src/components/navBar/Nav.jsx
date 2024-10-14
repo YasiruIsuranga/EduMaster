@@ -37,7 +37,7 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form className="d-flex align-items-center">
+          <Form className="d-flex flex-row align-items-center align-items-center">
           <Dropdown  width="20" height="20">
               <Dropdown.Toggle variant="outline-info" id="dropdown-basic" className='m-2'>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
