@@ -1,36 +1,16 @@
 import React, { useState } from 'react';
 import { Card, Button, Modal } from 'react-bootstrap';
-import './Programs.css'; // Custom CSS
-import StudentNavBar from '../../components/StudentNavBar/StudentNavBar'; // Ensure correct import
+import './Programs.css';
+import StudentNavBar from '../../components/StudentNavBar/StudentNavBar';
 import Footer from '../../components/Footer/footer';
 import LogedNavBar from '../../components/LogedNavBar/LogedNavBar';
 
-const Programs = ({ addCourse, enrolledCourses = [] }) => {
+const Programs = ({ addCourse, enrolledCourses = [], removeCourse }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  // Example courses data
   const courses = [
-    {
-      id: 1,
-      title: 'Maths',
-      teacher: 'Mr. John Doe',
-      description: 'Learn basic to advanced mathematics.',
-      image: 'https://via.placeholder.com/100x100',
-    },
-    {
-      id: 2,
-      title: 'Physics',
-      teacher: 'Mrs. Jane Smith',
-      description: 'Explore the fundamental principles of physics.',
-      image: 'https://via.placeholder.com/100x100',
-    },
-    {
-      id: 3,
-      title: 'Chemistry',
-      teacher: 'Dr. Emily Johnson',
-      description: 'Understand the building blocks of matter.',
-      image: 'https://via.placeholder.com/100x100',
-    },
     {
       id: 1,
       title: 'Maths',
@@ -72,15 +52,10 @@ const Programs = ({ addCourse, enrolledCourses = [] }) => {
 
   return (
     <>
-    <LogedNavBar/>
-      <div className="container-fluid main-container ">
+      <LogedNavBar />
+      <div className="container-fluid main-container">
         <div className="row">
-          {/* Left-aligned Student NavBar */}
-        
-            <StudentNavBar />
-          
-
-          {/* Main Content Area */}
+          <StudentNavBar />
           <div className="col-md-9 col-lg-8">
             <div className="programs-section py-4">
               <h3 className="text-center text-dark mb-4">Available Programs</h3>
@@ -106,8 +81,6 @@ const Programs = ({ addCourse, enrolledCourses = [] }) => {
                   )
                 ))}
               </div>
-
-              {/* Modal for Enrollment */}
               <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
                   <Modal.Title>Confirm Enrollment</Modal.Title>

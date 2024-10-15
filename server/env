@@ -1,0 +1,3 @@
+PORT=5000
+CLIENT_URL=http://localhost:5173
+MONGO_URI=mongodb+srv://infolankareads:Edu1234@cluster0.9o3rv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
