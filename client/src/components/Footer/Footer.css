@@ -1,44 +1,26 @@
-footer {
-    font-size: 0.9rem; /* Adjust font size for a more compact look */
+.bg-darkblue {
+    background-color: #00274d !important; /* Dark blue */
 }
 
 .logo2 {
-    width: 160px; /* Reduced size to 80% of the original */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px;
+    width: 50%;
+    
 }
 
-
-
-.text-reset {
-    color: #f42d00;
-}
-
-.text-reset:hover {
-    color: #e63d00; /* Slightly different shade on hover */
+footer p, footer a {
+    color: #ccc;
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    .logo2 {
-        width: 140px;
-    }
+footer a:hover {
+    color: #fff;
 }
 
-@media (max-width: 576px) {
-    .logo2 {
-        width: 120px;
-    }
+footer ul {
+    padding: 0;
+    list-style-type: none;
+}
 
-    .text-uppercase {
-        font-size: 0.8rem;
-    }
-
-    .text-reset {
-        font-size: 0.8rem;
-    }
-
-    .pp {
-        font-size: 0.8rem;
-    }
+footer ul li {
+    margin-bottom: 10px;
 }

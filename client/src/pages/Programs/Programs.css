@@ -1,0 +1,33 @@
+.programs-container {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .small-section h4 {
+    color: #343a40;
+    font-weight: bold;
+  }
+  
+  .large-section .course-image {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .card {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

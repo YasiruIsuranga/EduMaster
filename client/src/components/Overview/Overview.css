@@ -1,83 +1,36 @@
-/* General container styling */
 .overview-container {
-    padding: 20px 10px; /* Reduced padding */
+    background-color: #d1d4d7; /* Light background color */
 }
 
-/* Icon styling */
+.overview-card {
+    background-color: white;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px; /* Restricting width for consistency */
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
 .icon {
-    transition: color 0.3s ease, transform 0.3s ease;
+    color: #007bff; /* Blue color for icons */
 }
 
-/* Light mode icon color */
-.icon {
-    color: #007bff; /* Blue color for light mode */
-}
-
-.icon:hover {
-    transform: scale(1.1); /* Slight scale on hover */
-}
-
-/* Dark mode icon color */
-body.dark-mode .icon {
-    color: #28a745; /* Green color for dark mode */
-}
-
-/* Statistic number and text styling */
 .stat-number {
-    font-size: 1.8rem; /* Reduced font size */
-    color: #333;
-    margin-bottom: 5px;
+    color: #007bff; /* Blue color for stat numbers */
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .stat-text {
-    font-size: 0.9rem; /* Reduced font size */
-    color: #555;
+    color: #666;
+    font-size: 1rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .stat-number {
-        font-size: 1.5rem; /* Further reduce on smaller screens */
-    }
-
-    .stat-text {
-        font-size: 0.8rem; /* Further reduce on smaller screens */
-    }
-
-    .icon {
-        font-size: 35px; /* Smaller icons on small screens */
-    }
-}
-
-@media (max-width: 576px) {
-    .stat-number {
-        font-size: 1.3rem; /* Further reduce on very small screens */
-    }
-
-    .stat-text {
-        font-size: 0.7rem; /* Further reduce on very small screens */
-    }
-
-    .icon {
-        font-size: 30px; /* Smaller icons on very small screens */
-    }
-}
-
-/* Dark mode styling for overview section */
-body.dark-mode .overview-container {
-    background-color: #1c1e22; /* Dark background for overview container */
-    color: #ffffff; /* Default text color for dark mode */
-}
-
-body.dark-mode .stat-number {
-    color: #28a745; /* Green color for statistic numbers in dark mode */
-}
-
-body.dark-mode .stat-text {
-    color: #d1d1d1; /* Light gray text for better readability */
-}
-
-/* Ensure the icon hover effect remains consistent */
-body.dark-mode .icon:hover {
-    transform: scale(1.1); /* Slight scale on hover */
+.text-center h3 {
+    color: #007bff; /* Blue color for titles */
 }

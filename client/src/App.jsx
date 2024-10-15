@@ -6,6 +6,12 @@ import About from './pages/about/About.jsx'
 import Courses from './pages/courses/Courses.jsx'
 import SignIn from './pages/signin/StudentSignIn.jsx';
 import AuthProvider from './contexts/auth-context/index.jsx'
+import OpenCourse from './pages/OpenCourse/OpenCourse.jsx'
+import Programs from './pages/Programs/Programs.jsx'
+import StudentDashboard from './pages/StudentDashboard/StudentDashboard.jsx'
+import StudentUserProfile from './pages/StudentUserProfile/StudentUserProfile.jsx'
+import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard.jsx'
+import TeacherUserProfile from './pages/TeacherUserProfile/TeacherUserprofile.jsx'
 
 function App() {
   return (
@@ -15,6 +21,12 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/courses' element={<Courses />} />
         <Route path='/studentPortal' element={<SignIn />} />
+        <Route path='/opencourse' element={<OpenCourse />} />
+        <Route path='/programs' element={<Programs />} />
+        <Route path='/studentdashboard' element={<StudentDashboard />} />
+        <Route path='/studentuserprofile' element={<StudentUserProfile />} />
+        <Route path='/teacherdashboard' element={<TeacherDashboard />} />
+        <Route path='/teacheruserprofile' element={<TeacherUserProfile />} />
     </Routes>
     </AuthProvider>
 )

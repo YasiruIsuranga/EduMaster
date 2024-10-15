@@ -1,66 +1,39 @@
-/* General icon styling */
-.feature-icon {
-    border: 2px solid #007bff; /* Bootstrap primary color */
-    padding: 10px;
-    border-radius: 50%;
-    color: #007bff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Bootstrap primary color */
-}
-
-/* General background styling */
 .feature-background {
-    background-color: #f8f9fa; /* Light grey background for better readability */
-    padding: 60px 20px;
-    border-radius: 10px;
+    background-color: #f8f9fa; /* Light background for the section */
 }
 
 .feature-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #1188e3; /* Dark grey text */
+    color: #007bff; /* Blue color for the main title */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .feature-icon {
-        width: 30px;
-        height: 30px;
-    }
-
-    .feature-title {
-        font-size: 1.5rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
+.feature-card {
+    background-color: white;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px; /* Limiting the card width for better centering */
 }
 
-/* Dark mode styling */
-body.dark-mode .feature-background {
-    background-color: #343a40;
-    color: #ffffff;
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-mode .feature-icon {
-    border-color: #28a745; /* Bootstrap success color */
-    color: #28a745;
+.feature-icon {
+    align-items: center !important;
+    
+    color: #007bff; /* Blue icon color */
 }
 
-body.dark-mode .feature-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); /* Success color */
+h4 {
+    color: #007bff; /* Blue color for feature titles */
+    font-weight: 600;
 }
 
-body.dark-mode .feature-title {
-    color: #28a745; /* Success color for dark mode */
-}
-
-body.dark-mode p {
-    color: #d1d1d1;
+p {
+    color: #666;
+    font-size: 1rem;
 }
