@@ -1,74 +1,73 @@
-import React, { useState } from 'react';
-import { ProgressBar, Modal, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './CourseSection.css';
 
 const CourseSection = ({ enrolledCourses = [], removeCourse }) => {
-  const [showRemoveModal, setShowRemoveModal] = useState(false);
-  const [courseToRemove, setCourseToRemove] = useState(null);
+  const [courses, setCourses] = useState([]);
+  const navigate = useNavigate();
 
-  const handleRemoveClick = (courseId) => {
-    setCourseToRemove(courseId);
-    setShowRemoveModal(true);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/courses');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setCourses(data);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    };
+    fetchCourses();
+  }, []);
+
+  const isEnrolled = (courseId) => {
+    return enrolledCourses.some((course) => course._id === courseId);
   };
 
-  const handleConfirmRemove = () => {
-    if (courseToRemove !== null) {
-      removeCourse(courseToRemove);
-      setShowRemoveModal(false);
-    }
+  const handleOpenCourse = (courseId) => {
+    navigate(`/opencourse/${courseId}`);
   };
 
   return (
-    <div className="course-section container py-4">
-      <h3 className="text-center text-light mb-4">My Courses</h3>
-      <div className="row">
-        {enrolledCourses.length === 0 ? (
-          <p className="text-center text-light">You are not enrolled in any courses.</p>
-        ) : (
-          enrolledCourses.map((course) => (
-            <div key={course.id} className="col-md-4 mb-4">
-              <div className="course-item p-3 bg-light rounded shadow-sm text-center">
-                <div className="course-image">
-                  <img src={course.image} alt={course.title} className="rounded-circle" />
-                </div>
-                <div className="course-title mt-2">
-                  <h5>{course.title}</h5>
-                </div>
-                <div className="course-progress mt-2">
-                  <p>Progress: {course.progress || 0}%</p>
-                  <ProgressBar now={course.progress || 0} label={`${course.progress || 0}%`} />
-                </div>
-                <div className="course-button mt-3">
-                  <Button 
-                    variant="danger" 
-                    onClick={() => handleRemoveClick(course.id)}
-                  >
-                    Remove Course
-                  </Button>
-                </div>
+    <>
+      <div className="container-fluid main-container">
+        <div className="row">
+          <div className="col-md-9 col-lg-8">
+            <div className="programs-section py-4">
+              <h3 className="text-center text-dark mb-4">Available Programs</h3>
+              <div className="row">
+                {courses.map((course) => (
+                  !isEnrolled(course._id) && (
+                    <div key={course._id} className="col-md-6 col-lg-4 mb-4">
+                      <Card className="h-100 shadow-sm">
+                        <Card.Img variant="top" src={course.image} />
+                        <Card.Body className="d-flex flex-column">
+                          <Card.Title>{course.title}</Card.Title>
+                          <Card.Text><strong>Teacher:</strong> {course.teacher}</Card.Text>
+                          <Card.Text>{course.description}</Card.Text>
+                          <div className="mt-auto">
+                            <Button
+                              variant="info"
+                              onClick={() => handleOpenCourse(course._id)}
+                              className="mb-2"
+                            >
+                              Open Course
+                            </Button>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  )
+                ))}
               </div>
             </div>
-          ))
-        )}
+          </div>
+        </div>
       </div>
-      {/* Remove Course Modal */}
-      <Modal show={showRemoveModal} onHide={() => setShowRemoveModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirm Removal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to remove this course?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowRemoveModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleConfirmRemove}>
-            Yes, Remove
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+    </>
   );
 };
 

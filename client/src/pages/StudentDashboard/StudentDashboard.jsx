@@ -27,10 +27,7 @@ const StudentDashboard = () => {
           <div className="col-lg-9 col-md-8 col-sm-12 right-content">
             <SuserProfile />
             
-            <CourseSection 
-              enrolledCourses={enrolledCourses} 
-              removeCourse={removeCourse} 
-            />
+            
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Course = require('../models/Course'); // Adjust the path as needed
+const Course = require('../models/Course');
 
-// Route to get all courses
-router.get('/', async (req, res) => { // Updated to match your main route "/api/courses"
+// Get all courses
+router.get('/', async (req, res) => {
   try {
     const courses = await Course.find();
     res.json(courses);
@@ -13,12 +13,25 @@ router.get('/', async (req, res) => { // Updated to match your main route "/api/
   }
 });
 
-// Route to add a course (you can use this to initially populate the DB)
-router.post('/', async (req, res) => { // Updated to match your main route "/api/courses"
-  const { title, teacher, description, image } = req.body;
+// Get a course by ID (for "Open Course" page)
+router.get('/:id', async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.json(course);
+  } catch (err) {
+    console.error('Error fetching course:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-  // Ensure all required fields are provided
-  if (!title || !teacher || !description || !image) {
+// Add a new course (can be used to populate DB)
+router.post('/', async (req, res) => {
+  const { title, teacher, description, image, weeks } = req.body;
+
+  if (!title || !teacher || !description || !image || !weeks) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
@@ -26,7 +39,8 @@ router.post('/', async (req, res) => { // Updated to match your main route "/api
     title,
     teacher,
     description,
-    image
+    image,
+    weeks
   });
 
   try {

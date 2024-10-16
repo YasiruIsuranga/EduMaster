@@ -21,7 +21,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/courses' element={<Courses />} />
         <Route path='/studentPortal' element={<SignIn />} />
-        <Route path='/opencourse' element={<OpenCourse />} />
+        <Route path='/opencourse/:courseId' element={<OpenCourse />} />
         <Route path='/programs' element={<Programs />} />
         <Route path='/studentdashboard' element={<StudentDashboard />} />
         <Route path='/studentuserprofile' element={<StudentUserProfile />} />

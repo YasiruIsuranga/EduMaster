@@ -1,43 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import "./OpenCourse.css"; // For custom styles
+import { useParams } from "react-router-dom"; // To get the courseId from the URL
 import NavBar from "../../components/navBar/Nav";
 import Footer from "../../components/Footer/footer";
 import StudentNavBar from "../../components/StudentNavBar/StudentNavBar";
+import "./OpenCourse.css";
 
 const OpenCourse = () => {
-  const course = {
-    name: "Course name",
-    weeks: [
-      {
-        week: 1,
-        video: "https://www.example.com/lecture1",
-        pdf: "https://www.example.com/lecture1.pdf",
-        quiz: "https://www.example.com/quiz1",
-        resources: ["https://www.example.com/resource1", "https://www.example.com/resource2"],
-      },
-      {
-        week: 2,
-        video: "https://www.example.com/lecture2",
-        pdf: "https://www.example.com/lecture2.pdf",
-        quiz: "https://www.example.com/quiz2",
-        resources: ["https://www.example.com/resource3", "https://www.example.com/resource4"],
-      },
-    ],
-  };
+  const { courseId } = useParams(); // Get courseId from the URL
+  const [course, setCourse] = useState(null);
+
+  // Fetch the course details using courseId
+  useEffect(() => {
+    const fetchCourseDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/courses/${courseId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch course details');
+        }
+        const data = await response.json();
+        setCourse(data);
+      } catch (error) {
+        console.error("Error fetching course details:", error);
+      }
+    };
+    fetchCourseDetails();
+  }, [courseId]);
+
+  if (!course) {
+    return <div>Loading...</div>; // Display loading until course is fetched
+  }
 
   return (
     <>
       <NavBar />
       <div className="d-flex">
-        {/* Sidebar */}
         <StudentNavBar />
-
-        {/* Main Content */}
         <Container className="open-course-container py-5 ms-auto">
           <Row>
             <Col className="text-center mb-4">
-              <h1 className="course-title">{course.name}</h1>
+              <h1 className="course-title">{course.title}</h1>
+              <h3 className="course-teacher"> Instructor Name: {course.teacher}</h3>
             </Col>
           </Row>
 

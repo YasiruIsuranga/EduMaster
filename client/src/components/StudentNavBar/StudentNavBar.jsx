@@ -9,22 +9,22 @@ function StudentNavBar() {
         <h4 className="text-white">Dashboard Menu</h4>
         <ul className="navbar-nav">
           <li className="nav-item mb-3">
-            <a href="studentdashboard" className="nav-link text-white">
+            <a href="/studentdashboard" className="nav-link text-white">
               <i className="bi bi-house-door-fill me-2"></i> Dashboard
             </a>
           </li>
           <li className="nav-item mb-3">
-            <a href="courses" className="nav-link text-white">
+            <a href="/courses" className="nav-link text-white">
               <i className="bi bi-journal-text me-2"></i> Courses
             </a>
           </li>
           <li className="nav-item mb-3">
-            <a href="programs" className="nav-link text-white">
+            <a href="/programs" className="nav-link text-white">
               <i className="bi bi-diagram-3-fill me-2"></i> Programs
             </a>
           </li>
           <li className="nav-item mb-3">
-            <a href="studentuserprofile" className="nav-link text-white">
+            <a href="/studentuserprofile" className="nav-link text-white">
               <i className="bi bi-person-fill me-2"></i> User Profile
             </a>
           </li>
