@@ -16,12 +16,14 @@ app.use(cors({
 
 app.use(express.json());
 
-//routes configuration
-app.use("/auth", authRoutes);
 
 
 //create a database connection
 mongoose.connect(MONGO_URI).then(()=>console.log('MongoDB Connected')).catch((e)=>console.log(e));
+
+//routes configuration
+app.use("/auth", authRoutes);
+
 
 app.use((err,req,res,next)=>{
     console.log(err.stack);

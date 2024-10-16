@@ -61,7 +61,7 @@ function NavBar() {
 
             <Dropdown.Menu>
               <Dropdown.Item href="/studentPortal">Student Portal</Dropdown.Item>
-              <Dropdown.Item href="/teacherPortal">Teacher Portal</Dropdown.Item>
+              <Dropdown.Item href="/techerPortal">Teacher Portal</Dropdown.Item>
               <Dropdown.Item href="/adminPanel">Admin Panel</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
