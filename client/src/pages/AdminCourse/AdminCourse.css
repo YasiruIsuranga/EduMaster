@@ -1,0 +1,127 @@
+.main-container {
+    padding: 20px;
+  }
+  
+  h3 {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .main-container {
+    padding: 20px;
+  }
+  
+  h3 {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .week-info {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  /* Container for the course list */
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Individual course card */
+.course-card {
+    width: 30%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Course image styles */
+.course-image {
+    width: 50% !important;
+    height: auto; /* Set fixed height for uniformity */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Course title */
+.course-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Teacher name and description */
+.course-teacher,
+.course-description {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #555; /* Subtle color for text */
+}
+
+/* Button styles */
+.btn-link {
+    color: #f42d00; /* Your theme color */
+    text-decoration: underline;
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.btn-link:hover {
+    color: #d71e00; /* Darker shade on hover */
+}
+
+/* Modal Header */
+.modal-header {
+    background-color: #f42d00; /* Your theme color */
+    color: white;
+}
+
+/* Modal Footer Button */
+.modal-footer .btn-primary {
+    background-color: #f42d00; /* Your theme color */
+    border-color: #f42d00; /* Match border color */
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #d71e00; /* Darker shade on hover */
+}
+
+/* Modal styles for inputs */
+.modal-body .form-control {
+    margin-bottom: 10px; /* Space between inputs */
+}
+
+/* Adjust spacing in the Add Week Modal */
+.add-week-modal {
+    margin-top: 20px; /* Margin for add week modal */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+}

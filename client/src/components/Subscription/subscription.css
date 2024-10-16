@@ -1,90 +1,60 @@
-.subscription {
-    background-image: url("https://img.freepik.com/free-photo/education-day-arrangement-table-with-copy-space_23-2148721266.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-    padding: 40px;
+.education-section {
+    background-color: #f8f9fa;
+    padding: 50px 0;
 }
 
-.subscription::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast */
-    z-index: 0;
-}
-
-.subscription .row {
-    position: relative;
-    z-index: 1;
-}
-
-.subscription-title {
-    font-size: 2rem;
-    color: #f8f9fa; /* Light gray for better readability */
-    margin-bottom: 20px;
+.section-title {
+    font-size: 2.5rem;
+    color: #003366;
     font-weight: bold;
 }
 
-.input {
-    background-color: #ffffff;
-    color: #333;
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666666;
+}
+
+.education-card {
     border: none;
-    border-radius: 5px;
-    padding: 10px;
-    max-width: 300px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.input:focus {
-    outline: none;
-    box-shadow: 0px 4px 16px rgba(244, 45, 0, 0.5); /* Focus effect */
+.education-card:hover {
+    transform: scale(1.05);
 }
 
-.btnssubscribe {
-    background-color: #007bff !important; /* Updated to a green color */
-    color: white;
-    border: 2px solid #0056b3 !important;
-    border-radius: 10px;
-    font-size: 1rem;
+.card-title {
+    font-size: 1.5rem;
+    color: #003366;
     font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333333;
+}
+
+.btn-lg {
     padding: 10px 30px;
-}
-
-.btnssubscribe:hover {
-    background-color: #0025f4 !important; /* Hover turns into the primary red color */
+    background-color: #003366;
     color: white;
-    border-color :#0025f4;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
 }
 
-@media (max-width: 768px) {
-    .subscription-title {
-        font-size: 1.6rem;
-    }
-    .form-control {
-        max-width: 180px;
-    }
+.btn-lg:hover {
+    background-color: #001f4d;
 }
 
-@media (max-width: 576px) {
-    .subscription-title {
-        font-size: 1.4rem;
-    }
-    .form-control {
-        max-width: 160px;
-    }
-    .btnssubscribe {
-        font-size: 0.8rem;
-        padding: 6px 15px;
-    }
+
+
+.education-card img {
+    width: 100%; /* Make the image take the full width of the card */
+    height: 200px; /* Set a fixed height for the images */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+
+.container {
+    padding-top: 1rem; /* Adjust top padding */
+    padding-bottom: 1rem; /* Adjust bottom padding */
 }

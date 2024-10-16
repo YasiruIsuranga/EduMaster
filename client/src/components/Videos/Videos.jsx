@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext'; // Assuming you have a ThemeContext
-import './Videos.css'; // Custom styles
-import { Button } from 'react-bootstrap'; // Using Bootstrap for buttons
+import React from 'react';
+import './Videos.css';
+import { Button } from 'react-bootstrap';
 
 function Videos() {
-  // const { isDarkMode } = useContext(ThemeContext); // For dark mode
-
   const videos = [
     {
       title: "Learning React for Beginners",
@@ -28,11 +25,11 @@ function Videos() {
   ];
 
   return (
-    <div className={`videos-section container-fluid py-5`}>
+    <div className="videos-section container-fluid py-5">
       <h2 className="text-center mb-5">Educational Videos</h2>
       <div className="row g-4">
         {videos.map((video, index) => (
-          <div key={index} className="col-md-4 d-flex flex-column align-items-center">
+          <div key={index} className="col-md-4 d-flex flex-column align-items-center video-card">
             <div className="video-container">
               <iframe
                 className="youtube-video"
@@ -45,7 +42,7 @@ function Videos() {
                 allowFullScreen
               ></iframe>
             </div>
-            <h5 className="mt-3">{video.title}</h5>
+            <h5 className="mt-3 video-title">{video.title}</h5>
             <p className="text-center video-description">{video.description}</p>
             <Button
               href={video.channelUrl}

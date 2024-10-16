@@ -1,114 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './subscription.css';
+import './Subscription.css';
 
-function Subscription() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [isSubscribed, setIsSubscribed] = useState(false);
-    const [popupMessage, setPopupMessage] = useState('');
-
-    useEffect(() => {
-        // Retrieve subscription details from localStorage if available
-        const storedName = localStorage.getItem('name');
-        const storedEmail = localStorage.getItem('email');
-        const subscriptionStatus = localStorage.getItem('isSubscribed') === 'true';
-
-        if (storedName && storedEmail) {
-            setName(storedName);
-            setEmail(storedEmail);
-            setIsSubscribed(subscriptionStatus);
-        }
-    }, []);
-
-    const handleSubscribe = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch('http://localhost:5000/subscribe', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, email }),
-        });
-
-        if (response.ok) {
-            // Save to localStorage
-            localStorage.setItem('name', name);
-            localStorage.setItem('email', email);
-            localStorage.setItem('isSubscribed', true);
-
-            setIsSubscribed(true);
-            setPopupMessage('You have successfully subscribed!');
-        } else {
-            alert('Subscription failed. Please try again.');
-        }
-    };
-
-    const handleUnsubscribe = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch('http://localhost:5000/unsubscribe', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
-
-        if (response.ok) {
-            // Clear from localStorage
-            localStorage.removeItem('name');
-            localStorage.removeItem('email');
-            localStorage.setItem('isSubscribed', false);
-
-            setIsSubscribed(false);
-            setPopupMessage('You have successfully unsubscribed!');
-            setName(''); // Clear the name field
-            setEmail(''); // Clear the email field
-        } else {
-            alert('Unsubscription failed. Please try again.');
-        }
-    };
+function EducationInfo() {
+    const educationImg1 = 'https://static.vecteezy.com/system/resources/thumbnails/007/126/175/small/glowing-lightbulb-with-virtual-brain-on-open-book-and-connection-line-for-reading-and-education-make-smart-or-creative-thinking-idea-concept-photo.jpg';
+    const educationImg2 = 'https://theglobalscholars.com/wp-content/uploads/2020/12/34512613_xl-1-scaled.jpg';
 
     return (
-        <div className='subscription'>
-            <div className="container-fluid text-white py-4">
-                <div className="row justify-content-center mb-4">
-                    <div className="col-lg-6 text-center">
-                        <h2 className="subscription-title">Stay Updated with Us</h2>
+        <div className="education-section">
+            <div className="container py-3"> {/* Reduced padding */}
+                <div className="row text-center mb-4">
+                    <div className="col">
+                        <h2 className="section-title">Why Choose Us for Your Education Journey?</h2>
+                        <p className="section-subtitle">Empowering students and educators with top-notch resources</p>
                     </div>
                 </div>
-                <div className="row justify-content-center align-items-center">
-                    <div className="col-lg-6">
-                        <form className="d-flex flex-column flex-md-row justify-content-center align-items-center">
-                            <input
-                                type="text"
-                                className="form-control mb-2 mb-md-0 me-md-2 input"
-                                placeholder="Your Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                                disabled={isSubscribed}
-                            />
-                            <input
-                                type="email"
-                                className="form-control mb-2 mb-md-0 me-md-2 input"
-                                placeholder="Your Email Address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                disabled={isSubscribed}
-                            />
-                            <button
-                                type="button"
-                                className={`btn ${isSubscribed ? 'btn-danger' : 'btn-primary'} btnssubscribe`}
-                                onClick={isSubscribed ? handleUnsubscribe : handleSubscribe}
-                            >
-                                {isSubscribed ? 'UNSUBSCRIBE' : 'SUBSCRIBE'}
-                            </button>
-                        </form>
-                        {popupMessage && <div className="alert alert-success mt-3">{popupMessage}</div>}
+                <div className="row">
+                    <div className="col-md-6 mb-4">
+                        <div className="card education-card">
+                            <img src={educationImg1} className="card-img-top" alt="Education Resource 1" />
+                            <div className="card-body">
+                                <h5 className="card-title">Innovative Learning Tools</h5>
+                                <p className="card-text">
+                                    Our platform provides cutting-edge tools designed to enhance learning experiences. From interactive courses to adaptive assessments, we make sure you’re equipped to succeed.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-6 mb-4">
+                        <div className="card education-card">
+                            <img src={educationImg2} className="card-img-top" alt="Education Resource 2" />
+                            <div className="card-body">
+                                <h5 className="card-title">Expert Guidance & Support</h5>
+                                <p className="card-text">
+                                    We collaborate with industry experts and educators to provide you with high-quality guidance and resources, ensuring you stay ahead in your educational journey.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,4 +44,4 @@ function Subscription() {
     );
 }
 
-export default Subscription;
+export default EducationInfo;
