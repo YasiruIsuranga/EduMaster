@@ -63,7 +63,7 @@ const OpenCourse = () => {
                         <strong>Lecture PDF:</strong>
                         <a href={weekData.pdf} target="_blank" rel="noopener noreferrer" className="ms-2">
                           Download PDF
-                        </a>
+                        </a> 
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <strong>Quiz:</strong>

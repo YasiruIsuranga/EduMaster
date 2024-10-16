@@ -12,6 +12,7 @@ import StudentDashboard from './pages/StudentDashboard/StudentDashboard.jsx'
 import StudentUserProfile from './pages/StudentUserProfile/StudentUserProfile.jsx'
 import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard.jsx'
 import TeacherUserProfile from './pages/TeacherUserProfile/TeacherUserprofile.jsx'
+import TeacherOpenCourse from './pages/TeacherOpenCourse/TeacherOpenCourse.jsx'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/studentuserprofile' element={<StudentUserProfile />} />
         <Route path='/teacherdashboard' element={<TeacherDashboard />} />
         <Route path='/teacheruserprofile' element={<TeacherUserProfile />} />
+        <Route path='/teacheropencourse/:courseId' element={<TeacherOpenCourse />} />
     </Routes>
     </AuthProvider>
 )
