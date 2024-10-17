@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Modal, Form, Container } from 'react-bootstrap';
 import './AdminCourse.css';
-import LogedNavBar from '../../components/LogedNavBar/LogedNavBar';
+
 import Footer from '../../components/Footer/footer';
+import AdminNavBar from '../../components/AdminNavBar/AdminNavBar';
 
 const AdminCourse = () => {
   const [showModal, setShowModal] = useState(false);
@@ -238,7 +239,7 @@ const AdminCourse = () => {
 
   return (
     <>
-      <LogedNavBar />
+      <AdminNavBar />
       <Container fluid className="main-container">
         <h3 className="text-center text-dark mb-4">Admin Course Management</h3>
         <Button className="mb-4" onClick={handleShowAddCourseModal}>Add New Course</Button>
