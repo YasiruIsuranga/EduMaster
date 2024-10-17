@@ -260,238 +260,157 @@ const AdminCourse = () => {
                   <Button className="mt-auto btn btn-info" onClick={() => handleShowAddWeekModal(course)}>
                     Add Week
                   </Button>
-                  <div>
-                    <h5>Weeks</h5>
-                    {course.weeks.map((week, index) => (
-                      <div key={index} className="week-info">
-                        <p>{`Week ${index + 1}: Video - ${week.video}, PDF - ${week.pdf}, Quiz - ${week.quiz}`}</p>
-                        <Button variant="link" onClick={() => handleShowEditWeekModal(week, index)}>Edit Week</Button>
-                        <Button variant="link" onClick={() => handleRemoveWeek(index)}>Remove Week</Button>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="container mt-4">
+    <h5 className="text-center mb-4">Course Weeks</h5>
+    <div className="list-group">
+        {course.weeks.map((week, index) => (
+            <div key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                <p className="mb-0">{`Week ${index + 1}: Video - ${week.video}, PDF - ${week.pdf}`}</p>
+               {/* <div>
+                    <Button variant="secondary" onClick={() => handleShowEditWeekModal(week, index)} className="me-2">
+                        Edit Week
+                    </Button>
+                    <Button variant="danger" onClick={() => handleRemoveWeek(index)}>
+                        Remove Week
+                    </Button>
+                </div>*/}
+            </div>
+        ))}
+    </div>
+</div>
+
                 </Card.Body>
               </Card>
             </div>
           ))}
         </div>
-
-        {/* Add Course Modal */}
-        <Modal show={showModal} onHide={handleCloseAddCourseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Course</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="formCourseTitle">
-                <Form.Label>Course Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.title}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, title: e.target.value })}
-                  placeholder="Enter course title"
-                />
-              </Form.Group>
-              <Form.Group controlId="formCourseTeacher">
-                <Form.Label>Teacher</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.teacher}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, teacher: e.target.value })}
-                  placeholder="Enter teacher's name"
-                />
-              </Form.Group>
-              <Form.Group controlId="formCourseDescription">
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  value={newCourseData.description}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, description: e.target.value })}
-                  placeholder="Enter course description"
-                />
-              </Form.Group>
-              <Form.Group controlId="formCourseImage">
-                <Form.Label>Image URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.image}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, image: e.target.value })}
-                  placeholder="Enter image URL"
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseAddCourseModal}>Close</Button>
-            <Button variant="primary" onClick={handleAddNewCourse}>Add Course</Button>
-          </Modal.Footer>
-        </Modal>
-
-        {/* Edit Course Modal */}
-        <Modal show={showEditCourseModal} onHide={handleCloseEditCourseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Course</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="formEditCourseTitle">
-                <Form.Label>Course Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.title}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, title: e.target.value })}
-                  placeholder="Enter course title"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditCourseTeacher">
-                <Form.Label>Teacher</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.teacher}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, teacher: e.target.value })}
-                  placeholder="Enter teacher's name"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditCourseDescription">
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  value={newCourseData.description}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, description: e.target.value })}
-                  placeholder="Enter course description"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditCourseImage">
-                <Form.Label>Image URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={newCourseData.image}
-                  onChange={(e) => setNewCourseData({ ...newCourseData, image: e.target.value })}
-                  placeholder="Enter image URL"
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseEditCourseModal}>Close</Button>
-            <Button variant="primary" onClick={handleEditCourse}>Update Course</Button>
-          </Modal.Footer>
-        </Modal>
-
-        {/* Add Week Modal */}
-        <Modal show={showAddWeekModal} onHide={handleCloseAddWeekModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Week</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="formAddWeekVideo">
-                <Form.Label>Video URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="video"
-                  value={newWeekData.video}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter video URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formAddWeekPDF">
-                <Form.Label>PDF URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="pdf"
-                  value={newWeekData.pdf}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter PDF URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formAddWeekQuiz">
-                <Form.Label>Quiz URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="quiz"
-                  value={newWeekData.quiz}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter quiz URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formAddWeekResources">
-                <Form.Label>Additional Resources (comma separated)</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="resources"
-                  value={newWeekData.resources.join(', ')}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter additional resources"
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseAddWeekModal}>Close</Button>
-            <Button variant="primary" onClick={handleAddNewWeek}>Add Week</Button>
-          </Modal.Footer>
-        </Modal>
-
-        {/* Edit Week Modal */}
-        <Modal show={showEditWeekModal} onHide={handleCloseEditWeekModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit Week</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group controlId="formEditWeekVideo">
-                <Form.Label>Video URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="video"
-                  value={newWeekData.video}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter video URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditWeekPDF">
-                <Form.Label>PDF URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="pdf"
-                  value={newWeekData.pdf}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter PDF URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditWeekQuiz">
-                <Form.Label>Quiz URL</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="quiz"
-                  value={newWeekData.quiz}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter quiz URL"
-                />
-              </Form.Group>
-              <Form.Group controlId="formEditWeekResources">
-                <Form.Label>Additional Resources (comma separated)</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="resources"
-                  value={newWeekData.resources.join(', ')}
-                  onChange={handleChangeWeek}
-                  placeholder="Enter additional resources"
-                />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseEditWeekModal}>Close</Button>
-            <Button variant="primary" onClick={handleEditWeek}>Update Week</Button>
-          </Modal.Footer>
-        </Modal>
-
-        <Footer />
       </Container>
+
+      {/* Add Course Modal */}
+      <Modal show={showModal} onHide={handleCloseAddCourseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formCourseTitle">
+              <Form.Label>Title</Form.Label>
+              <Form.Control type="text" placeholder="Enter course title" value={newCourseData.title} onChange={(e) => setNewCourseData({ ...newCourseData, title: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formCourseTeacher">
+              <Form.Label>Teacher</Form.Label>
+              <Form.Control type="text" placeholder="Enter teacher's name" value={newCourseData.teacher} onChange={(e) => setNewCourseData({ ...newCourseData, teacher: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formCourseDescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder="Enter course description" value={newCourseData.description} onChange={(e) => setNewCourseData({ ...newCourseData, description: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formCourseImage">
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter image URL" value={newCourseData.image} onChange={(e) => setNewCourseData({ ...newCourseData, image: e.target.value })} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseAddCourseModal}>Close</Button>
+          <Button variant="primary" onClick={handleAddNewCourse}>Add Course</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Edit Course Modal */}
+      <Modal show={showEditCourseModal} onHide={handleCloseEditCourseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formEditCourseTitle">
+              <Form.Label>Title</Form.Label>
+              <Form.Control type="text" placeholder="Enter course title" value={newCourseData.title} onChange={(e) => setNewCourseData({ ...newCourseData, title: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formEditCourseTeacher">
+              <Form.Label>Teacher</Form.Label>
+              <Form.Control type="text" placeholder="Enter teacher's name" value={newCourseData.teacher} onChange={(e) => setNewCourseData({ ...newCourseData, teacher: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formEditCourseDescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder="Enter course description" value={newCourseData.description} onChange={(e) => setNewCourseData({ ...newCourseData, description: e.target.value })} />
+            </Form.Group>
+            <Form.Group controlId="formEditCourseImage">
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter image URL" value={newCourseData.image} onChange={(e) => setNewCourseData({ ...newCourseData, image: e.target.value })} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseEditCourseModal}>Close</Button>
+          <Button variant="primary" onClick={handleEditCourse}>Save Changes</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Add Week Modal */}
+      <Modal show={showAddWeekModal} onHide={handleCloseAddWeekModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Week</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formWeekVideo">
+              <Form.Label>Video URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter video URL" value={newWeekData.video} onChange={handleChangeWeek} name="video" />
+            </Form.Group>
+            <Form.Group controlId="formWeekPDF">
+              <Form.Label>PDF URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter PDF URL" value={newWeekData.pdf} onChange={handleChangeWeek} name="pdf" />
+            </Form.Group>
+            <Form.Group controlId="formWeekQuiz">
+              <Form.Label>Quiz URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter quiz URL" value={newWeekData.quiz} onChange={handleChangeWeek} name="quiz" />
+            </Form.Group>
+            <Form.Group controlId="formWeekResources">
+              <Form.Label>Resources (comma-separated)</Form.Label>
+              <Form.Control type="text" placeholder="Enter resources" value={newWeekData.resources.join(', ')} onChange={handleChangeWeek} name="resources" />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseAddWeekModal}>Close</Button>
+          <Button variant="primary" onClick={handleAddNewWeek}>Add Week</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Edit Week Modal */}
+      <Modal show={showEditWeekModal} onHide={handleCloseEditWeekModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Week</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formEditWeekVideo">
+              <Form.Label>Video URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter video URL" value={newWeekData.video} onChange={handleChangeWeek} name="video" />
+            </Form.Group>
+            <Form.Group controlId="formEditWeekPDF">
+              <Form.Label>PDF URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter PDF URL" value={newWeekData.pdf} onChange={handleChangeWeek} name="pdf" />
+            </Form.Group>
+            <Form.Group controlId="formEditWeekQuiz">
+              <Form.Label>Quiz URL</Form.Label>
+              <Form.Control type="text" placeholder="Enter quiz URL" value={newWeekData.quiz} onChange={handleChangeWeek} name="quiz" />
+            </Form.Group>
+            <Form.Group controlId="formEditWeekResources">
+              <Form.Label>Resources (comma-separated)</Form.Label>
+              <Form.Control type="text" placeholder="Enter resources" value={newWeekData.resources.join(', ')} onChange={handleChangeWeek} name="resources" />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseEditWeekModal}>Close</Button>
+          <Button variant="primary" onClick={handleEditWeek}>Save Changes</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Footer />
     </>
   );
 };

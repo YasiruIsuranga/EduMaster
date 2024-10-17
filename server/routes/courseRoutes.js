@@ -52,7 +52,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 // Update a course by ID (for "Teacher Open Course" page)
 router.put('/:id', async (req, res) => {
   try {
@@ -66,4 +65,83 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+// Remove a course by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedCourse = await Course.findByIdAndDelete(req.params.id);
+    if (!deletedCourse) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.json({ message: 'Course deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting course:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Add a new week to a course
+router.post('/:id/weeks', async (req, res) => {
+  const { video, pdf, quiz, resources } = req.body;
+  const newWeek = { video, pdf, quiz, resources };
+
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    course.weeks.push(newWeek);
+    await course.save();
+
+    res.status(201).json(course);
+  } catch (err) {
+    console.error('Error adding week:', err);
+    res.status(400).json({ message: 'Error adding week' });
+  }
+});
+
+// Update a week in a course
+router.put('/:id/weeks/:weekId', async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    const weekIndex = course.weeks.findIndex(week => week._id.toString() === req.params.weekId);
+    if (weekIndex === -1) {
+      return res.status(404).json({ message: 'Week not found' });
+    }
+
+    course.weeks[weekIndex] = { ...course.weeks[weekIndex], ...req.body };
+    await course.save();
+
+    res.json(course);
+  } catch (err) {
+    console.error('Error updating week:', err);
+    res.status(400).json({ message: 'Error updating week' });
+  }
+});
+
+// Remove a week from a course
+router.delete('/:id/weeks/:weekId', async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    const updatedWeeks = course.weeks.filter(week => week._id.toString() !== req.params.weekId);
+    course.weeks = updatedWeeks;
+
+    await course.save();
+
+    res.json(course);
+  } catch (err) {
+    console.error('Error removing week:', err);
+    res.status(400).json({ message: 'Error removing week' });
+  }
+});
+
 module.exports = router;
