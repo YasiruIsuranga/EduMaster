@@ -7,13 +7,12 @@ function Footer() {
     return (
         <footer className="container-fluid text-center text-lg-start bg-darkblue text-white py-4">
             <section className="container">
-                <div className="row">
+                <div className="row text-center text-md-start">
                     {/* Logo and Description */}
-                    <div className="col-md-4 col-lg-3 mb-4">
+                    <div className="col-md-4 col-lg-3 mb-4 d-flex justify-content-center justify-content-md-start">
                         <a href="#">
-                            <img src={logo} className='logo2' alt="EduMaster Logo" />
+                            <img src={logo} className="logo2 img-fluid" alt="EduMaster Logo" />
                         </a>
-                        
                     </div>
 
                     {/* Quick Links */}

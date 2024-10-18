@@ -14,7 +14,7 @@ function SuserProfile() {
       <div className="student-stats mt-4">
         <p className="stat-item">Courses Enrolled: <strong>5</strong></p>
         
-        <button className="btn btn-primary btn-block mt-4">Edit Profile</button>
+        {/* <button className="btn btn-primary btn-block mt-4">Edit Profile</button>*/}
       </div>
     </div>
   );
