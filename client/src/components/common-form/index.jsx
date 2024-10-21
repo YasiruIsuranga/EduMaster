@@ -1,6 +1,5 @@
-import { Button } from "../ui/button"
-import FormControls from "./form-controls"
-
+import { Button } from "../ui/button";
+import FormControls from "./form-controls";
 
 function CommonForm({
     handleSubmit,
@@ -10,13 +9,23 @@ function CommonForm({
     setFormData,
     isButtonDisabled = false
 }) {
-    return(
-        <form onSubmit={handleSubmit}>
-            {/* render form controls here */}
-            <FormControls formControls={formControls} formData={formData} setFormData={setFormData} />
-            <Button disabled={isButtonDisabled} type="submit" className="mt-4 w-full">{buttonText || 'Submit'}</Button>
+    return (
+        <form onSubmit={(event) => handleSubmit(event)}>
+            {/* Render form controls here */}
+            <FormControls 
+                formControls={formControls} 
+                formData={formData} 
+                setFormData={setFormData} 
+            />
+            <Button 
+                disabled={isButtonDisabled} 
+                type="submit" 
+                className="mt-4 w-full"
+            >
+                {buttonText || 'Submit'}
+            </Button>
         </form>
-    )
+    );
 }
 
-export default CommonForm
+export default CommonForm;

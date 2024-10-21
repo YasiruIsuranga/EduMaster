@@ -14,6 +14,7 @@ import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard.jsx'
 import TeacherUserProfile from './pages/TeacherUserProfile/TeacherUserprofile.jsx'
 import TeacherOpenCourse from './pages/TeacherOpenCourse/TeacherOpenCourse.jsx'
 import AdminCourse from './pages/AdminCourse/AdminCourse.jsx'
+import TeacherSignIn from './pages/signin/TeacherSignIn.jsx'
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/courses' element={<Courses />} />
         <Route path='/studentPortal' element={<SignIn />} />
+        <Route path='/teacherPortal' element={<TeacherSignIn />} />
+        <Route path="/teachersignin" element={<TeacherSignIn />} />
         <Route path='/opencourse/:courseId' element={<OpenCourse />} />
         <Route path='/programs' element={<Programs />} />
         <Route path='/studentdashboard' element={<StudentDashboard />} />

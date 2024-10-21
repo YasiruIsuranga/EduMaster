@@ -1,36 +1,41 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/auth-routes/index')
+const authRoutes = require('./routes/auth');
 
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
+// Enable CORS for your frontend
 app.use(cors({
-    origin : process.env.CLIENT_URL,
-    methods : ["GET", "POST", "DELETE", "PUT"],
-    allowedHeaders : ["Content-Type", "Authorization"]
+    origin: process.env.CLIENT_URL, // Allow your frontend URL
+    methods: ['GET', 'POST', 'DELETE', 'PUT'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
 }));
 
+// Middleware to parse JSON requests
 app.use(express.json());
 
+// Establish database connection
+mongoose.connect(MONGO_URI)
+    .then(() => console.log('MongoDB Connected'))
+    .catch((e) => console.error('MongoDB connection error:', e));
 
+// Routes configuration
+app.use('/auth', authRoutes); // Route to handle auth (students/teachers)
 
-//create a database connection
-mongoose.connect(MONGO_URI).then(()=>console.log('MongoDB Connected')).catch((e)=>console.log(e));
-
-//routes configuration
-app.use("/auth", authRoutes);
-
-
-app.use((err,req,res,next)=>{
-    console.log(err.stack);
+// Generic error handler for server-side errors
+app.use((err, req, res, next) => {
+    console.error(err.stack);
     res.status(500).json({
-        success : false,
-        message : 'Something went wrong'
+        success: false,
+        message: 'Something went wrong. Please try again.'
     });
 });
 
-app.listen(PORT, ()=> console.log(`Server is now running on port ${PORT}`))
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is now running on port ${PORT}`);
+});
