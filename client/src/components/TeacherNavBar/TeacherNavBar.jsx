@@ -67,7 +67,7 @@ function TeacherNavBar() {
           <h4 className="text-white">Dashboard Menu</h4>
           <ul className="navbar-nav">
             <li className="nav-item mb-3">
-              <a href="teacherdashboard" className="nav-link text-white">
+              <a href="/teacherdashboard" className="nav-link text-white">
                 <i className="bi bi-house-door-fill me-2"></i> Dashboard
               </a>
             </li>
