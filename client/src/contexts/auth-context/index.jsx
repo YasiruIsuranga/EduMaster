@@ -1,133 +1,68 @@
-import { initialSignInFormData, initialSignUpFormData } from "@/config";
-import { checkAuthService, loginService, registerService } from "@/services";
-import { createContext, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'; // Import for navigation
+// src/contexts/auth-context.jsx
+import React, { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const AuthContext = createContext(null);
+// Create AuthContext
+export const AuthContext = createContext();
 
-export default function AuthProvider ({children}) {
-  const [signInFormData, setSignInFormData] = useState(initialSignInFormData);
-  const [signUpFormData, setSignUpFormData] = useState(initialSignUpFormData);
-  const [auth, setAuth] = useState({
-    authenticate: false,
-    user: null,
-  });
+export function AuthProvider({ children }) {
+    const [signInFormData, setSignInFormData] = useState({ userEmail: '', password: '' });
+    const [signUpFormData, setSignUpFormData] = useState({ userName: '', userEmail: '', password: '' });
+    const navigate = useNavigate();
 
-  const navigate = useNavigate(); // To navigate between pages
+    async function handleLoginUser(event) {
+        // event.preventDefault();
+        // Logic to handle login (e.g., API call)
+        try {
+            console.log('Logging in user', signInFormData);
+            // Navigate to respective portal upon success based on role
+            const role = 'student'; // Example role
+            if (role === 'student') {
+                navigate('/studentdashboard');
+            } else if (role === 'instructor') {
+                navigate('/teacherdashboard');
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    }
 
-  // Handle Register User (Teacher or Student)
-//   async function handleRegisterUser(event) {
+    async function handleRegisterUser(role) {
+      try {
+        const response = await fetch(`http://localhost:5000/auth/${role}/signup`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(signUpFormData),
+        });
     
-//     try {
-//       const data = await registerService(signUpFormData);
-//       if (data.success) {
-      
-//         navigate('/teachersignin'); 
-//       } else {
-//         console.error('Registration failed:', data.error);
-//       }
-//     } catch (error) {
-//       console.error('Error during registration:', error);
-//     }
-//   }
-
-async function handleRegisterUser(role) {
-    try {
-      const response = await fetch(`http://localhost:5000/auth/${role}/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(signUpFormData),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Registration failed');
+        if (!response.ok) {
+          throw new Error('Registration failed');
+        }
+    
+        const data = await response.json();
+        console.log('Registration successful:', data.message);
+        alert('Registration successfully, Please sign in to continue.');
+        setSignUpFormData({ userName: '', userEmail: '', password: '' });
+    
+        // Redirect based on role to the appropriate sign-in page
+        navigate(role === 'teacher' ? '/teacherPortal' : '/studentPortal');
+      } catch (error) {
+        console.error('Registration failed:', error);
       }
-  
-      const data = await response.json();
-      console.log('Registration successful:', data.message);
-      setSignUpFormData({ userName: '', userEmail: '', password: '' });
-      navigate('/teacherPortal')
-    } catch (error) {
-      console.error('Registration failed:', error);
     }
-  }
 
-  // Handle Login User (Teacher or Student)
-  async function handleLoginUser(event) {
-    event.preventDefault();
-    try {
-      const data = await loginService(signInFormData);
-      if (data.success) {
-        // Store token and user information
-        localStorage.setItem('accessToken', data.data.accessToken);
-        setAuth({
-          authenticate: true,
-          user: data.data.user,
-        });
-        // Navigate to dashboard or appropriate page after login
-        navigate('/teacherdashboard'); // Adjust route based on user type
-      } else {
-        console.error('Login failed:', data.error);
-        setAuth({
-          authenticate: false,
-          user: null,
-        });
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
-  }
-
-  // Check Authenticated User
-  async function checkAuthUser() {
-    try {
-      const token = localStorage.getItem('accessToken');
-      if (!token) {
-        setAuth({
-          authenticate: false,
-          user: null,
-        });
-        return;
-      }
-      const data = await checkAuthService();
-      if (data.success) {
-        setAuth({
-          authenticate: true,
-          user: data.data.user,
-        });
-      } else {
-        setAuth({
-          authenticate: false,
-          user: null,
-        });
-      }
-    } catch (error) {
-      console.error('Error in checkAuthUser:', error);
-      setAuth({
-        authenticate: false,
-        user: null,
-      });
-    }
-  }
-
-  useEffect(() => {
-    checkAuthUser(); // Check if the user is authenticated on component mount
-  }, []);
-
-  return (
-    <AuthContext.Provider
-      value={{
-        signInFormData,
-        setSignInFormData,
-        signUpFormData,
-        setSignUpFormData,
-        handleRegisterUser,
-        handleLoginUser,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{
+            signInFormData,
+            setSignInFormData,
+            signUpFormData,
+            setSignUpFormData,
+            handleLoginUser,
+            handleRegisterUser,
+        }}>
+            {children}
+        </AuthContext.Provider>
+    );
 }

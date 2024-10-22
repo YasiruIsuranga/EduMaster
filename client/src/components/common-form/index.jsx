@@ -1,3 +1,4 @@
+// src/components/common-form/index.jsx
 import { Button } from "../ui/button";
 import FormControls from "./form-controls";
 
@@ -11,7 +12,6 @@ function CommonForm({
 }) {
     return (
         <form onSubmit={(event) => handleSubmit(event)}>
-            {/* Render form controls here */}
             <FormControls 
                 formControls={formControls} 
                 formData={formData} 

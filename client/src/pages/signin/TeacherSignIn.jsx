@@ -5,89 +5,96 @@ import CommonForm from '@/components/common-form';
 import { signInFormControls, signUpFormControls } from '@/config';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AuthContext } from '@/contexts/auth-context';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
-function TeacherSignIn() { 
+function TeacherSignIn() {
   const [activeTab, setActiveTab] = useState('signin');
   const {
     signInFormData,
     setSignInFormData,
-    handleLoginUser,  
     signUpFormData,
     setSignUpFormData,
     handleRegisterUser,
+    handleLoginUser,
   } = useContext(AuthContext);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   function handleTabChange(value) {
     setActiveTab(value);
   }
 
   function checkSignInIsValid() {
-    return signInFormData && signInFormData.userEmail !== '' && signInFormData.password !== '';
+    return signInFormData && signInFormData.userEmail && signInFormData.password;
   }
 
   function checkSignUpIsValid() {
-    return signUpFormData && signUpFormData.userName !== '' && signUpFormData.userEmail !== '' && signUpFormData.password !== '';
+    return signUpFormData && signUpFormData.userName && signUpFormData.userEmail && signUpFormData.password;
   }
 
-  // Modified registration handler
   async function handleTeacherSignUp(event) {
-    event.preventDefault(); // Pass the event object here
+    event.preventDefault();
     try {
-      await handleRegisterUser('teacher'); // Assuming handleRegisterUser handles the sign-up request
-      navigate('/teachersignin'); // Redirect to the sign-in page after success
+      await handleRegisterUser('teacher');
     } catch (error) {
-      console.error('Error during teacher sign-up', error);
+      console.error('Error during teacher sign-up:', error);
+    }
+  }
+
+  async function handleTeacherSignIn(event) {
+    event.preventDefault();
+    try {
+      await handleLoginUser();
+      navigate('/teacherdashboard');
+    } catch (error) {
+      console.error('Error during teacher sign-in:', error);
     }
   }
 
   return (
     <div className="d-flex min-vh-100 w-100">
       <div className="d-lg-flex align-items-center w-50">
-        <div className='row w-100 m-0'>
-          <div className="col-lg-12 text-center tbgLoginL">
-          </div>
+        <div className="row w-100 m-0">
+          <div className="col-lg-12 text-center tbgLoginL"></div>
         </div>
       </div>
       <div className="d-flex align-items-center justify-content-center w-50">
-        <div className='row w-100'>
-          <div className='flex items-center justify-center min-h-screen bg-background bgLoginR'>
-            <Tabs value={activeTab} defaultValue='signin' onValueChange={handleTabChange} className='w-full max-w-md'>
-              <TabsList className='grid w-full grid-cols-2'>
-                <TabsTrigger value='signin'>Sign In</TabsTrigger>
-                <TabsTrigger value='signup'>Sign Up</TabsTrigger>
+        <div className="row w-100">
+          <div className="flex items-center justify-center min-h-screen bg-background bgLoginR">
+            <Tabs value={activeTab} defaultValue="signin" onValueChange={handleTabChange} className="w-full max-w-md">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="signin">Sign In</TabsTrigger>
+                <TabsTrigger value="signup">Sign Up</TabsTrigger>
               </TabsList>
-              <TabsContent value='signin'>
+              <TabsContent value="signin">
                 <Card className="p-6 space-y-4">
                   <CardHeader>
                     <CardTitle>Sign In to Your Account</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
-                    <CommonForm 
+                    <CommonForm
                       formControls={signInFormControls}
-                      buttonText={'Sign In'}
+                      buttonText="Sign In"
                       formData={signInFormData}
                       setFormData={setSignInFormData}
                       isButtonDisabled={!checkSignInIsValid()}
-                      handleSubmit={handleLoginUser}
+                      handleSubmit={handleTeacherSignIn}
                     />
                   </CardContent>
                 </Card>
               </TabsContent>
-              <TabsContent value='signup'>
+              <TabsContent value="signup">
                 <Card className="p-6 space-y-4">
                   <CardHeader>
                     <CardTitle>Register to EduMaster</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
-                    <CommonForm 
+                    <CommonForm
                       formControls={signUpFormControls}
-                      buttonText={'Sign Up'}
+                      buttonText="Sign Up"
                       formData={signUpFormData}
                       setFormData={setSignUpFormData}
                       isButtonDisabled={!checkSignUpIsValid()}
-                      handleSubmit={handleTeacherSignUp} // Use custom handler for sign-up
+                      handleSubmit={handleTeacherSignUp}
                     />
                   </CardContent>
                 </Card>
