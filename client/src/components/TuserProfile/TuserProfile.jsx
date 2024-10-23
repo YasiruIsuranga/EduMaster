@@ -14,7 +14,7 @@ function TuserProfile() {
     <div className="student-stats mt-4">
       <p className="stat-item">Courses Name: <strong>Subject name</strong></p>
       
-      <button className="btn btn-primary btn-block mt-4">Edit Profile</button>
+      {/* <button className="btn btn-primary btn-block mt-4">Edit Profile</button> */}
     </div>
   </div>
   );

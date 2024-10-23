@@ -46,24 +46,26 @@ const Programs = ({ addCourse, enrolledCourses = [], removeCourse }) => {
   return (
     <>
       <LogedNavBar />
-      <div className="container-fluid main-container">
+      <div className="container-fluid ">
         <div className="row">
           <StudentNavBar />
           <div className="col-md-9 col-lg-8">
             <div className="programs-section py-4">
-              <h3 className="text-center text-dark mb-4">Available Programs</h3>
+              <h2 className="text-center text-blue mb-4">Available Programs</h2>
               <div className="row">
                 {courses.map((course) => (
                   !isEnrolled(course._id) && ( // Use _id for MongoDB
-                    <div key={course._id} className="col-md-6 col-lg-4 mb-4">
-                      <Card className="h-100 shadow-sm">
+                    <div key={course._id} className="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
+                      <Card className="h-100 shadow-sm hover-card">
                         <Card.Img variant="top" src={course.image} />
                         <Card.Body className="d-flex flex-column">
-                          <Card.Title>{course.title}</Card.Title>
+                          <Card.Title className="course-title">
+                            {course.title}
+                          </Card.Title>
                           <Card.Text><strong>Teacher:</strong> {course.teacher}</Card.Text>
                           <Card.Text>{course.description}</Card.Text>
                           <Button
-                            className="mt-auto btn btn-primary"
+                            className="mt-auto btn btn-primary enroll-btn"
                             onClick={() => handleEnrollClick(course)}
                           >
                             Enroll
@@ -74,12 +76,14 @@ const Programs = ({ addCourse, enrolledCourses = [], removeCourse }) => {
                   )
                 ))}
               </div>
-              <Modal show={showModal} onHide={() => setShowModal(false)}>
+
+              {/* Enrollment Confirmation Modal */}
+              <Modal show={showModal} onHide={() => setShowModal(false)} centered>
                 <Modal.Header closeButton>
                   <Modal.Title>Confirm Enrollment</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  Are you sure you want to enroll in {selectedCourse?.title}?
+                  Are you sure you want to enroll in <strong>{selectedCourse?.title}</strong>?
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={() => setShowModal(false)}>

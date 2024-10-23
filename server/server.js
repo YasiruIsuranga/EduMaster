@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const courseRoutes = require('./routes/courseRoutes'); // Import course routes
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,7 +25,16 @@ mongoose.connect(MONGO_URI)
     .catch((e) => console.error('MongoDB connection error:', e));
 
 // Routes configuration
-app.use('/auth', authRoutes); // Route to handle auth (students/teachers)
+app.use("/auth", authRoutes);
+app.use("/api/courses", courseRoutes); // Correctly set up course routes
+// Create a database connection
+mongoose.connect(MONGO_URI, )
+.then(() => {
+    console.log('MongoDB Connected');
+})
+.catch((error) => {
+    console.error('MongoDB connection error:', error);
+});
 
 // Generic error handler for server-side errors
 app.use((err, req, res, next) => {
