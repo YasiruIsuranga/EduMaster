@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SuserProfile.css';
+import { AuthContext } from '@/contexts/auth-context'; // Import the AuthContext to access user details
 
 function SuserProfile() {
+  // Access the user details from AuthContext
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="student-profile-container text-center">
-      {/*<img
-        src="https://via.placeholder.com/150"
+      {/* Display user's profile image if available */}
+      {/* <img
+        src={currentUser?.profileImage || "https://via.placeholder.com/150"}
         alt="Student Profile"
         className="profile-image rounded-circle"
-      />*/}
-      <h2 className="student-name mt-3">John Doe</h2>
-      <p className="student-email">johndoe@example.com</p>
+      /> */}
+      <h2 className="student-name mt-3">{currentUser?.userName || 'Student Name'}</h2>
+      <p className="student-email">{currentUser?.userEmail || 'student@example.com'}</p>
       <div className="student-stats mt-4">
-        <p className="stat-item">Courses Enrolled: <strong>5</strong></p>
+        <p className="stat-item">
         
-        {/* <button className="btn btn-primary btn-block mt-4">Edit Profile</button>*/}
+        </p>
+        {/* <button className="btn btn-primary btn-block mt-4">Edit Profile</button> */}
       </div>
     </div>
   );
