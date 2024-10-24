@@ -1,14 +1,14 @@
 .student-nav-container {
   top: 0;
   left: 0;
-  height: 100vh;
+ 
   width: 250px;
   background-color: #002147 !important; /* Dark blue background */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important; /* Soft shadow */
   z-index: 1000;
 }
 #student-sidebar {
-  height: 100%;
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

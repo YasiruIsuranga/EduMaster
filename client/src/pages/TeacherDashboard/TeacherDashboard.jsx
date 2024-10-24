@@ -13,8 +13,8 @@ const TeacherDashboard = () => {
   return (
     <>
       <LogedNavBar/>
-      <div className=" container-fluid ">
-        <div className="row">
+      <div className=" container-fluid mt-4 ">
+        <div className="row ">
           {/* Left Sidebar: Navigation Menu */}
           <TeacherNavBar/>
           

@@ -23,12 +23,12 @@ function TeacherNavBar() {
   };
   const handleCourseSubmit = () => {
     // Validate input (you can customize this logic)
-    if (courseName === 'Maths' && courseId === '6710f6816bda0b3473e42344') {
+    if (courseName === 'Maths' && courseId === '6718e4cf8cf9d87533998bfa') {
       // Navigate to the course page if valid
       navigate(`/teacheropencourse/${courseId}`);
     } 
     // First else if condition
-    else if (courseName === 'Physics' && courseId === '6710f6816bda0b3473e42347') {
+    else if (courseName === 'Physics' && courseId === '6718e4cf8cf9d87533998bfd') {
       // Navigate to the respective course page
       navigate(`/teacheropencourse/${courseId}`);
     }
@@ -70,21 +70,7 @@ function TeacherNavBar() {
               <i className="bi bi-journal-text me-2"></i> Courses
             </a>
           </li>
-          <li className="nav-item mb-3">
-            <a href="teacherprofile" className="nav-link text-white">
-              <i className="bi bi-person-fill me-2"></i> User Profile
-            </a>
-          </li>
-          <li className="nav-item mb-3">
-            <a href="#" className="nav-link text-white">
-              <i className="bi bi-envelope-fill me-2"></i> Messages
-            </a>
-          </li>
-          <li className="nav-item mb-3">
-            <a href="#" className="nav-link text-white">
-              <i className="bi bi-gear-fill me-2"></i> Settings
-            </a>
-          </li>
+       
         </ul>
       </nav>
     </div>

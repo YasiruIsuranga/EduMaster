@@ -13,7 +13,7 @@ function StudentNavBar() {
   return (
     <>
     {/* Mobile View - Hamburger Icon */}
-    <div className="d-lg-none d-flex justify-content-between bg-primary text-white p-3">
+    <div className="d-lg-none d-flex justify-content-center text-center justify-items-center bg-primary text-white p-3">
       <h4 className="text-white">Dashboard</h4>
       <button
         className=" text-white bg-dark-blue"
@@ -46,21 +46,7 @@ function StudentNavBar() {
               <i className="bi bi-diagram-3-fill me-2"></i> Programs
             </a>
           </li>
-          <li className="nav-item mb-3">
-            <a href="/studentuserprofile" className="nav-link text-white">
-              <i className="bi bi-person-fill me-2"></i> User Profile
-            </a>
-          </li>
-          <li className="nav-item mb-3">
-            <a href="#" className="nav-link text-white">
-              <i className="bi bi-envelope-fill me-2"></i> Messages
-            </a>
-          </li>
-          <li className="nav-item mb-3">
-            <a href="#" className="nav-link text-white">
-              <i className="bi bi-gear-fill me-2"></i> Settings
-            </a>
-          </li>
+       
         </ul>
       </nav>
     </div>

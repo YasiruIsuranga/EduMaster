@@ -2,7 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    bottom:0;
+    height: 100%;
     width: 250px;
     background-color: #959ca3 !important; /* Light background */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important; /* Soft shadow */

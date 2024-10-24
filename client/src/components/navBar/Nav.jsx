@@ -36,7 +36,7 @@ function NavBar() {
   const handleLoginTeacher = () => {
     if (teacherID === '001' && teacherPassword === 'teacher123') {
       setShowTeacherModal(false);
-      navigate('/teacherPortal');  // Navigate to teacher portal if credentials are correct
+      navigate('/teacherdashboard');  // Navigate to teacher portal if credentials are correct
     } else {
       setErrorMessage('Invalid ID or Password');
     }
