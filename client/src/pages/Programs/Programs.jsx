@@ -64,12 +64,12 @@ const Programs = ({ addCourse, enrolledCourses = [], removeCourse }) => {
                           </Card.Title>
                           <Card.Text><strong>Teacher:</strong> {course.teacher}</Card.Text>
                           <Card.Text>{course.description}</Card.Text>
-                          <Button
+                          {/*<Button
                             className="mt-auto btn btn-primary enroll-btn"
                             onClick={() => handleEnrollClick(course)}
                           >
                             Enroll
-                          </Button>
+                          </Button>*/}
                         </Card.Body>
                       </Card>
                     </div>
